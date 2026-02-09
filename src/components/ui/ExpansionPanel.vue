@@ -4,13 +4,11 @@ import { computed } from 'vue';
 type Props = {
   modelValue?: boolean;
   title?: string;
-  disabled?: boolean;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   modelValue: false,
   title: '',
-  disabled: false,
 });
 
 const emit = defineEmits<{ (event: 'update:modelValue', value: boolean): void }>();
@@ -21,23 +19,13 @@ const isOpen = computed({
 });
 
 function toggle() {
-  if (props.disabled) return;
   isOpen.value = !isOpen.value;
 }
 </script>
 
 <template>
-  <div
-    class="expansion-panel"
-    :class="{ 'expansion-panel--open': isOpen, 'expansion-panel--disabled': disabled }"
-  >
-    <button
-      class="expansion-panel__header"
-      type="button"
-      :aria-expanded="isOpen"
-      :disabled="disabled"
-      @click="toggle"
-    >
+  <div class="expansion-panel" :class="{ 'expansion-panel--open': isOpen }">
+    <button class="expansion-panel__header" type="button" :aria-expanded="isOpen" @click="toggle">
       <span class="expansion-panel__title">{{ title }}</span>
       <span class="expansion-panel__icon" aria-hidden="true">▾</span>
     </button>
@@ -96,14 +84,6 @@ function toggle() {
 
 .expansion-panel--open .expansion-panel__icon {
   transform: rotate(180deg);
-}
-
-.expansion-panel--disabled {
-  opacity: 0.6;
-}
-
-.expansion-panel--disabled .expansion-panel__header {
-  cursor: not-allowed;
 }
 
 .expansion-enter-active,
