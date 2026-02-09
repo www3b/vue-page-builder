@@ -1,0 +1,42 @@
+:root {
+  --color-text: #1f2933;
+  --color-primary: #1867c0;
+  --color-secondary: #5c6bc0;
+  --color-success: #2e7d32;
+  --color-info: #0277bd;
+  --color-warning: #ed6c02;
+  --color-error: #d32f2f;
+
+  --input-border: #d7dbe0;
+  --input-text: #1f2933;
+  --input-muted: #6b7280;
+  --input-bg: #fff;
+  --input-focus: #1867c0;
+  --input-error: #d32f2f;
+}
+
+html {
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+input,
+textarea,
+button {
+  outline: none;
+}
+
+.form-message {
+  visibility: hidden;
+  color: var(--input-muted);
+  min-height: 1rem;
+  font-size: 0.78rem;
+}
+
+.form-message--visible {
+  visibility: visible;
+}
+
+.form-message--error {
+  color: var(--input-error);
+}
